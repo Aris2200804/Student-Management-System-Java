@@ -87,7 +87,7 @@ class StudentManager{
                     for(i=0;i<count;i++)
                     {
                     students[i].display();
-                }
+                    }
                 break;
                 }
                 case 3:
