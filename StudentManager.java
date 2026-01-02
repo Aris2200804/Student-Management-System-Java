@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 class Student
 {
     String name;
-    int id,i,idd;
+    int id,i;
     double marks[];
     Student(String name,int id,double marks[])
     {
@@ -31,18 +30,16 @@ void averageMarks()
     avg=sum/marks.length;
     System.out.println("Average Marks="+avg);
 }   
-void searchStudent(int idd)
+boolean searchStudent(int idd)
 {
-    this.idd=idd;
     if(idd==id)
     {
-        System.out.println("Student Found");
-        display();
+            return true;
     }
     else 
-    {
-        System.out.println("Student Not Found");
-    }
+        {
+            return false;
+        }   
 }
 }
 class StudentManager{
@@ -92,7 +89,7 @@ class StudentManager{
                 }
                 case 3:
                 {
-                    System.out.println("Average Marks of Stduent ");
+                    System.out.println("Average Marks ");
                     for(i=0;i<count;i++)
                     {
                     students[i].averageMarks();
@@ -103,24 +100,21 @@ class StudentManager{
                 {
                     System.out.print("Enter ID you want to Search: ");
                     idd = sc.nextInt();
-                    boolean found = false;
-
-                    for(i = 0; i < count; i++)
+                    for(i=0;i<count;i++)
                     {
-                        if(students[i].id == idd)
+                        if(students[i].searchStudent(idd))
                         {
-                            System.out.println("Student Found");
+                             System.out.println("Student Found");                    
                             students[i].display();
-                            found = true;
-                            break;
-                        }
+                             break;
+                         }
                     }
-
-                    if(!found)
+                    if(students[i].searchStudent(idd)==false)
                     {
                         System.out.println("Student Not Found");
                     }
                     break;
+                    
                 }
                 case 5:
                 {
@@ -133,5 +127,6 @@ class StudentManager{
                 }
             } 
         }while(x!=5);
+        sc.close();
     }
 }
